@@ -26,17 +26,19 @@ GSL_LIB = $(GSLLIB)/lib
 
 # Libraries to be linked
 LIBS = -L$(SPARSELIB_LIB) -lsparse -lspblas -lmv -L$(GSL_LIB) -lgsl -lgslcblas -lm -lrt
-OBJS = Matio.o
+OBJS = Matio.o Matgene.o
 
 # Rule to create executable from %.o
-all : $(OBJS) mat2HB
+all : $(OBJS) mat2HB matgene
 
 # Rule to create object
-mat2HB : $(OBJS)
-	$(CPP) $(INCLUDES) $(CPPFLAGS) $(OBJS) -o mat2HB $(LIBS)
+mat2HB : Matio.o
+	$(CPP) $(INCLUDES) $(CPPFLAGS) Matio.o -o mat2HB $(LIBS)
+matgene : Matgene.o
+	$(CPP) $(INCLUDES) $(CPPFLAGS) Matgene.o -o matgene $(LIBS)
 %.o : %.cc 
 	$(CPP) $(INCLUDES) $(CPPFLAGS) -c $<
 %.o : %.c
 	$(CPP) $(INCLUDES) $(CPPFLAGS) -c $<
 clean : 
-	rm -f *.o mat2HB
+	rm -f *.o mat2HB matgene

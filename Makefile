@@ -2,7 +2,7 @@
 # The C++ compiler
 
 CPP = g++
-CPPFLAGS = -DADD_ -O3 '-DCOMPLEX=std::complex<double>'
+CPPFLAGS = -DMY_DEBUG -DADD_ -O3 '-DCOMPLEX=std::complex<double>'
 
 # The architecture
 ARCH = linux
@@ -26,7 +26,7 @@ GSL_LIB = $(GSLLIB)/lib
 
 # Libraries to be linked
 LIBS = -L$(SPARSELIB_LIB) -lsparse -lspblas -lmv -L$(GSL_LIB) -lgsl -lgslcblas -lm -lrt
-OBJS = IML_Solver.o Solver.o main.o
+OBJS = Utils.o IML_Solver.o Solver.o main.o
 
 # Rule to create executable from %.o
 all : $(OBJS) lcra

@@ -22,6 +22,11 @@ int main(int argc, char *argv[])
 {
     IML_CG_testing();
 
+    IML_Benchmark1();
+    IML_Benchmark2();
+    IML_Benchmark3();
+    IML_Benchmark4();
+
     return 0;
 }
 
